@@ -23,10 +23,7 @@ public class Part1 {
                     break;
                 }
             }
-            if (currentVal >= input) {
-                found = true;
-                break;
-            }
+            if (found) break;
             
             // move up
             for (int i=1; i<=counter; ++i) {
@@ -37,10 +34,7 @@ public class Part1 {
                     break;
                 }
             }
-            if (currentVal >= input) {
-                found = true;
-                break;
-            }
+            if (found) break;
             
             // move left
             ++counter;
@@ -52,10 +46,7 @@ public class Part1 {
                     break;
                 }
             }
-            if (currentVal >= input) {
-                found = true;
-                break;
-            }
+            if (found) break;
             
             // move down
             for (int i=1; i<=counter; ++i) {
@@ -66,10 +57,7 @@ public class Part1 {
                     break;
                 }
             }
-            if (currentVal >= input) {
-                found = true;
-                break;
-            }
+            if (found) break;
         }
         System.out.println(Math.abs(stepsHorizontal) + Math.abs(stepsVertical));
     }
