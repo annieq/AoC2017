@@ -3,7 +3,6 @@ package com.adventOfCode.annieq.day4;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.adventOfCode.annieq.utilities.InputImport;
 
@@ -16,14 +15,19 @@ public class Part1 {
         int counter = 0;
         
         for (String phrase : lines) {
+            boolean valid = true;
         	ArrayList<String> words = new ArrayList<String>(Arrays.asList(phrase.split(" ")));
+        	ArrayList<String> words2 = new ArrayList<>();
         	for (String word : words) {
-        		words.remove(word); // doesn't work
-        		if (words.contains(word)) {
-        			++counter;
-        			break;
-        		}
+        	    if (words2.contains(word)) {
+        	        valid = false;
+        	    }
+        	    else {
+        	        words2.add(word);
+        	    }
         	}
+        	if (valid)
+        	    ++counter;
         }
         System.out.println(counter);
 	}
