@@ -8,6 +8,7 @@ import java.util.List;
 import com.adventOfCode.annieq.utilities.InputImport;
 
 public class Part1 {
+    
 	public static void main(String[] args) throws IOException {
         InputImport in = new InputImport("data//day7.txt");
         ArrayList<String> lines = in.getMultiLineData();
@@ -30,16 +31,18 @@ public class Part1 {
         boolean found = false;
         for (String prgName : prgNames) {
         	// check if is sb's child
+            found = true;   // assume it's not
         	for (String childName : childNames) {
         		List<String> names = Arrays.asList(childName.split(", "));
         		if (names.contains(prgName)) {
-        			System.out.println(prgName);
-        			found = true;
+        			found = false;   // it's sb's child
         			break;
         		}
         	}
-        	if (found)
+        	if (found) {
+        	    System.out.println(prgName);
         		break;
+        	}
         }
 	}
 }
