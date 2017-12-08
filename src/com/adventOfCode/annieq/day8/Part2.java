@@ -6,13 +6,15 @@ import java.util.HashMap;
 
 import com.adventOfCode.annieq.utilities.InputImport;
 
-public class Part1 {
+public class Part2 {
 
     static HashMap<String, Integer> registers = new HashMap<>();
-    
+
     public static void main(String[] args) throws IOException {
         InputImport in = new InputImport("data//day8.txt");
         ArrayList<String> lines = in.getMultiLineData();
+
+        int maxValue = 0;
         
         for (String line : lines) {
             String[] chunks = line.split(" ");
@@ -38,12 +40,8 @@ public class Part1 {
                     break;
                 }
             }
-        }
-        // find the max value
-        int maxValue = Integer.MIN_VALUE;
-        for (int value : registers.values()) {
-            if (value > maxValue)
-                maxValue = value;
+            if (registers.get(regName) > maxValue)
+                maxValue = registers.get(regName);
         }
         System.out.println(maxValue);
     }
