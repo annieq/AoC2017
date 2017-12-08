@@ -22,7 +22,7 @@ public class Part2 {
         // calculate weights
         // disclaimer: IT'S DIRTY AF!
         for (Program p : programs) {
-            if (!p.hasChildren())   // no children = no problems
+            if (!p.hasChildren())   // no children = no problems :D
                 continue;
             
             // calculate the weight of the first and second child
@@ -50,7 +50,6 @@ public class Part2 {
                 Program child = programs.get(programs.indexOf(new Program(childName, 0)));
                 if (refChildrenWeight != weight(child)) {
                     System.out.println(refChildrenWeight - weight(child) + child.weight);
-                    //System.out.println("w1:" + refChildrenWeight + " w2:" + weight(child) + " parent:" + child.weight);
                     break;
                 }
             }
@@ -73,14 +72,5 @@ public class Part2 {
             }
             return totalWeight;
         }
-            
-//        String[] chunks = program.split(" ");
-//        int prgWeight = Integer.parseInt(chunks[1].replaceAll("\\(\\", ""));
-//        if (chunks.length > 2) {
-//            for (int i=3; i<chunks.length; ++i) {
-//                prgWeight += weight(chunks[i].replaceAll(",", ""));
-//            }
-//        }
-//        return prgWeight;
     }
 }
