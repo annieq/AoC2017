@@ -11,6 +11,17 @@ public class Part1 {
         InputImport in = new InputImport("data//day13.txt");
         ArrayList<String> lines = in.getMultiLineData();
         
+        int severity = 0;
         
+        for (String line : lines) {
+            String[] chunks = line.split(": ");
+            int depth = Integer.parseInt(chunks[0]);
+            int range = Integer.parseInt(chunks[1]);
+            
+            if (depth % ((range-1)*2) == 0) {
+                severity += depth*range;
+            }
+        }
+        System.out.println(severity);
     }
 }
