@@ -14,4 +14,8 @@ public enum Direction {
         }
         return Direction.values()[tmp];
     }
+    
+    Direction reverseDirection() {
+        return Direction.values()[(this.ordinal()+2) % Direction.values().length];
+    }
 }
