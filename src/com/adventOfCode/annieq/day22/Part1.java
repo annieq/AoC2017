@@ -6,22 +6,6 @@ import java.util.ArrayList;
 import com.adventOfCode.annieq.utilities.InputImport;
 
 public class Part1 {
-    
-    enum Direction {
-        UP, RIGHT, DOWN, LEFT;
-        
-        Direction turnRight() {
-            return Direction.values()[(this.ordinal()+1) % Direction.values().length];
-        }
-        
-        Direction turnLeft() {
-            int tmp = (this.ordinal()-1) % Direction.values().length;
-            if (tmp < 0) {
-                tmp += Direction.values().length;
-            }
-            return Direction.values()[tmp];
-        }
-    }
 
     public static void main(String[] args) throws IOException {
         InputImport in = new InputImport("data//day22.txt");
