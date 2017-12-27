@@ -7,7 +7,7 @@ import com.adventOfCode.annieq.utilities.InputImport;
 public class Part1 {
 
     public static void main(String[] args) throws IOException {
-        InputImport in = new InputImport("data//day11t.txt");
+        InputImport in = new InputImport("data//day11.txt");
         String[] moves = in.getSingleLineData().split(",");
         
         // number of steps in directions:
@@ -37,41 +37,46 @@ public class Part1 {
                 break;
             }
         }
-        int max = Math.max(Math.abs(ns),
-                  Math.max(Math.abs(nesw), 
-                           Math.abs(nwse)));
-        int result = 0;
+        
         int tmp = 0;
-        if (Math.abs(ns) == max) {
-            
+        
+        if (nwse > 0 && nesw > 0) {
+            tmp = Math.min(Math.abs(nwse), Math.abs(nesw));
+            nwse -= tmp;
+            nesw -= tmp;
+            ns += tmp;
+        } else if (nwse < 0 && nesw < 0) {
+            tmp = Math.min(Math.abs(nwse), Math.abs(nesw));
+            nwse += tmp;
+            nesw += tmp;
+            ns -= tmp;
         }
-        if (ns > 0) {
-            tmp = ns + nesw + nwse;
-            if (tmp > result)
-                result = tmp;
-        } else {
-            tmp = (ns - nesw - nwse);
-            if (tmp > result)
-                result = tmp;
+        
+        if (ns < 0 && nesw > 0) {
+            tmp = Math.min(Math.abs(ns), Math.abs(nesw));
+            ns += tmp;
+            nesw -= tmp;
+            nwse -= tmp;
+        } else if (ns > 0 && nesw < 0) {
+            tmp = Math.min(Math.abs(ns), Math.abs(nesw));
+            ns -= tmp;
+            nesw += tmp;
+            nwse += tmp;            
         }
-        if (nesw > 0) {
-            tmp = nesw + ns - nwse;
-            if (tmp > result)
-                result = tmp;
-        } else {
-            tmp = (nesw - ns + nwse);
-            if (tmp > result)
-                result = tmp;
+        
+        if (ns > 0 && nwse < 0) {
+            tmp = Math.min(Math.abs(ns), Math.abs(nwse));
+            ns -= tmp;
+            nwse += tmp;
+            nesw += tmp;            
+        } else if (ns < 0 && nwse > 0) {
+            tmp = Math.min(Math.abs(ns), Math.abs(nwse));
+            ns += tmp;
+            nwse -= tmp;
+            nesw -= tmp;      
         }
-        if (nwse > 0) {
-            tmp = nwse + ns - nesw;
-            if (tmp > result)
-                result = tmp;
-        } else {
-            tmp = (nwse - ns + nesw);
-            if (tmp > result)
-                result = tmp;
-        }
+        int result = Math.abs(ns + nwse + nesw);
+        
         System.out.println(result);
     }
 }
